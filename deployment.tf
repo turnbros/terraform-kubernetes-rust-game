@@ -136,14 +136,14 @@ resource kubernetes_deployment "rust_deployment" {
           }
 
           liveness_probe {
-            initial_delay_seconds = 300
+            initial_delay_seconds = 600
             tcp_socket {
               port = var.rust_rcon_port
             }
           }
 
           readiness_probe {
-            initial_delay_seconds = 300
+            initial_delay_seconds = 600
             tcp_socket {
               port = var.rust_rcon_port
             }
