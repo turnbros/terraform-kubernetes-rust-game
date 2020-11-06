@@ -22,7 +22,7 @@ variable "cpu_request" {
 variable "memory_request" {
   type        = string
   description = ""
-  default     = "256Mi"
+  default     = "512Mi"
 }
 variable "cpu_limit" {
   type        = string
@@ -32,7 +32,7 @@ variable "cpu_limit" {
 variable "memory_limit" {
   type        = string
   description = ""
-  default     = "512Mi"
+  default     = "1536Mi"
 }
 
 variable "image_repository" {
