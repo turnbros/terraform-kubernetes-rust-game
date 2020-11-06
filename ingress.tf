@@ -2,7 +2,7 @@ locals {
 
   rcon_tcp_ingress = {
     apiVersion = "traefik.containo.us/v1alpha1"
-    kind = "IngressRouteTCP"
+    kind       = "IngressRouteTCP"
     metadata = {
       name = "${var.name}-rcon-tcp"
     }
@@ -16,9 +16,9 @@ locals {
           match = "HostSNI(`*`)"
           services = [
             {
-              name = kubernetes_service.rust_server.metadata.0.name
-              port = var.rust_rcon_port
-              weight = 10
+              name             = kubernetes_service.rust_server.metadata.0.name
+              port             = var.rust_rcon_port
+              weight           = 10
               terminationDelay = 400
             }
           ]
@@ -29,7 +29,7 @@ locals {
 
   app_tcp_ingress = {
     apiVersion = "traefik.containo.us/v1alpha1"
-    kind = "IngressRouteTCP"
+    kind       = "IngressRouteTCP"
     metadata = {
       name = "${var.name}-app-tcp"
     }
@@ -43,9 +43,9 @@ locals {
           match = "HostSNI(`*`)"
           services = [
             {
-              name = kubernetes_service.rust_server.metadata.0.name
-              port = var.rust_app_port
-              weight = 10
+              name             = kubernetes_service.rust_server.metadata.0.name
+              port             = var.rust_app_port
+              weight           = 10
               terminationDelay = 400
             }
           ]
@@ -56,7 +56,7 @@ locals {
 
   server_tcp_ingress = {
     apiVersion = "traefik.containo.us/v1alpha1"
-    kind = "IngressRouteTCP"
+    kind       = "IngressRouteTCP"
     metadata = {
       name = "${var.name}-server-tcp"
     }
@@ -70,9 +70,9 @@ locals {
           match = "HostSNI(`*`)"
           services = [
             {
-              name = kubernetes_service.rust_server.metadata.0.name
-              port = var.rust_server_port
-              weight = 10
+              name             = kubernetes_service.rust_server.metadata.0.name
+              port             = var.rust_server_port
+              weight           = 10
               terminationDelay = 400
             }
           ]
@@ -83,7 +83,7 @@ locals {
 
   server_udp_ingress = {
     apiVersion = "traefik.containo.us/v1alpha1"
-    kind = "IngressRouteUDP"
+    kind       = "IngressRouteUDP"
     metadata = {
       name = "${var.name}-server-udp"
     }
@@ -95,8 +95,8 @@ locals {
       routes = [
         {
           services = {
-            name = kubernetes_service.rust_server.metadata.0.name
-            port = var.rust_server_port
+            name   = kubernetes_service.rust_server.metadata.0.name
+            port   = var.rust_server_port
             weight = 10
           }
         }

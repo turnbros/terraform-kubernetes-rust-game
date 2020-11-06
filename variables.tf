@@ -116,7 +116,7 @@ variable "rust_server_maxplayers" {
 
 # RUST_SERVER_DESCRIPTION
 variable "rust_server_description" {
-  type        = number
+  type        = string
   description = "The publicly visible server description"
   default     = "This is a Rust server running inside a Docker container!"
 }
