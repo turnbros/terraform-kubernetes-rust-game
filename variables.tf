@@ -1,3 +1,19 @@
+###################################
+### Infrastructure Remote State ###
+###################################
+variable "remote_state_token" {
+  type        = string
+  description = "A cloud token to authenticate with when pulling the Infrastructure remote state"
+}
+variable "remote_state_organization" {
+  type        = string
+  description = "The name of the Terraform Cloud organization to pull the infrastructure remote state from"
+}
+variable "remote_state_workspace" {
+  type        = string
+  description = "The name of the Terraform Cloud workspace to pull the infrastructure remote state from"
+}
+
 variable "cpu_request" {
   type        = string
   description = ""
