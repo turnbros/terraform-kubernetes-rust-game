@@ -11,12 +11,12 @@ resource "kubernetes_service" "rust_server" {
     selector = {
       "app.kubernetes.io/name" = var.name
     }
-    port {
-      name        = "server"
-      protocol    = "TCP"
-      port        = var.rust_server_port
-      target_port = var.rust_server_port
-    }
+    #port {
+    #  name        = "server"
+    #  protocol    = "TCP"
+    #  port        = var.rust_server_port
+    #  target_port = var.rust_server_port
+    #}
     port {
       name        = "server"
       protocol    = "UDP"
