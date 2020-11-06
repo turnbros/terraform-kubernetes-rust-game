@@ -137,13 +137,13 @@ resource kubernetes_deployment "rust_deployment" {
 
           liveness_probe {
             tcp_socket {
-              port = var.rust_server_port
+              port = var.rust_rcon_port
             }
           }
 
           readiness_probe {
             tcp_socket {
-              port = var.rust_server_port
+              port = var.rust_rcon_port
             }
           }
         }
