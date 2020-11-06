@@ -58,7 +58,9 @@ variable "image_pull_policy" {
   description = ""
   default     = "IfNotPresent"
 }
-
+variable "image_pull_secret" {
+  type = string
+}
 variable "name" {
   type        = string
   description = ""
