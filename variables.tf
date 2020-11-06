@@ -17,22 +17,22 @@ variable "remote_state_workspace" {
 variable "cpu_request" {
   type        = string
   description = ""
-  default     = "100m"
+  default     = "200m"
 }
 variable "memory_request" {
   type        = string
   description = ""
-  default     = "128Mi"
+  default     = "256Mi"
 }
 variable "cpu_limit" {
   type        = string
   description = ""
-  default     = "200m"
+  default     = "400m"
 }
 variable "memory_limit" {
   type        = string
   description = ""
-  default     = "256Mi"
+  default     = "512Mi"
 }
 
 variable "image_repository" {
