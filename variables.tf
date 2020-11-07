@@ -30,7 +30,7 @@ variable "bucket_name" {
 variable "cpu_request" {
   type        = string
   description = ""
-  default     = "200m"
+  default     = "400m"
 }
 variable "memory_request" {
   type        = string
@@ -40,7 +40,7 @@ variable "memory_request" {
 variable "cpu_limit" {
   type        = string
   description = ""
-  default     = "400m"
+  default     = "800m"
 }
 variable "memory_limit" {
   type        = string
