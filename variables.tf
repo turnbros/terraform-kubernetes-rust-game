@@ -30,22 +30,22 @@ variable "bucket_name" {
 variable "cpu_request" {
   type        = string
   description = ""
-  default     = "400m"
+  default     = "500m"
 }
 variable "memory_request" {
   type        = string
   description = ""
-  default     = "512Mi"
+  default     = "2048Mi"
 }
 variable "cpu_limit" {
   type        = string
   description = ""
-  default     = "800m"
+  default     = "1000m"
 }
 variable "memory_limit" {
   type        = string
   description = ""
-  default     = "2048Mi"
+  default     = "2560Mi"
 }
 
 variable "image_repository" {
