@@ -19,11 +19,35 @@ resource kubernetes_deployment "rust_deployment" {
         }, local.labels)
       }
       spec {
+        image_pull_secrets {
+          name = kubernetes_secret.secret.metadata.0.name
+        }
         automount_service_account_token = false
         container {
           name              = var.name
           image             = "${var.image_repository}/${var.image_name}:${var.image_tag}"
           image_pull_policy = var.image_pull_policy
+
+          env {
+            name = "DEPLOYMENT_ID"
+            value = "${var.name}-${local.instance_id}"
+          }
+          env {
+            name = "BUCKET_ACCESS_KEY"
+            value = var.bucket_access_key
+          }
+          env {
+            name = "BUCKET_SECRET_KEY"
+            value = var.bucket_secret_key
+          }
+          env {
+            name = "BUCKET_HOST"
+            value = var.bucket_host
+          }
+          env {
+            name = "BUCKET_NAME"
+            value = var.bucket_name
+          }
 
           env {
             name  = "RUST_SERVER_STARTUP_ARGUMENTS"

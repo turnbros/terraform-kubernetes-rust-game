@@ -14,6 +14,19 @@ variable "remote_state_workspace" {
   description = "The name of the Terraform Cloud workspace to pull the infrastructure remote state from"
 }
 
+variable "bucket_access_key" {
+  type = string
+}
+variable "bucket_secret_key" {
+  type = string
+}
+variable "bucket_host" {
+  type = string
+}
+variable "bucket_name" {
+  type = string
+}
+
 variable "cpu_request" {
   type        = string
   description = ""
@@ -38,13 +51,13 @@ variable "memory_limit" {
 variable "image_repository" {
   type        = string
   description = ""
-  default     = "registry.hub.docker.com"
+  default     = "docker.pkg.github.com"
 }
 
 variable "image_name" {
   type        = string
   description = ""
-  default     = "didstopia/rust-server"
+  default     = "turnbros/patina/patina" #"didstopia/rust-server"
 }
 
 variable "image_tag" {
