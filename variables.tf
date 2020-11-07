@@ -106,14 +106,14 @@ variable "rust_server_seed" {
 variable "rust_server_worldsize" {
   type        = number
   description = "The map size, must be an integer"
-  default     = 3500
+  default     = 2500
 }
 
 # RUST_SERVER_MAXPLAYERS
 variable "rust_server_maxplayers" {
   type        = number
   description = "Maximum players on the server, must be an integer"
-  default     = 500
+  default     = 150
 }
 
 # RUST_SERVER_DESCRIPTION
