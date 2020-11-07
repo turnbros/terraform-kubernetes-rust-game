@@ -35,7 +35,7 @@ variable "cpu_request" {
 variable "memory_request" {
   type        = string
   description = ""
-  default     = "2560Mi"
+  default     = "2048Mi"
 }
 variable "cpu_limit" {
   type        = string
