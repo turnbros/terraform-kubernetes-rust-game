@@ -119,7 +119,7 @@ variable "rust_server_seed" {
 variable "rust_server_worldsize" {
   type        = number
   description = "The map size, must be an integer"
-  default     = 4500
+  default     = 3500
 }
 
 # RUST_SERVER_MAXPLAYERS
