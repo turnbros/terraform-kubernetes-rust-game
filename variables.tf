@@ -119,14 +119,14 @@ variable "rust_server_seed" {
 variable "rust_server_worldsize" {
   type        = number
   description = "The map size, must be an integer"
-  default     = 2500
+  default     = 1000
 }
 
 # RUST_SERVER_MAXPLAYERS
 variable "rust_server_maxplayers" {
   type        = number
   description = "Maximum players on the server, must be an integer"
-  default     = 150
+  default     = 100
 }
 
 # RUST_SERVER_DESCRIPTION
@@ -188,7 +188,7 @@ variable "rust_app_port" {
 variable "rust_branch" {
   type        = string
   description = "Sets the branch argument to use, eg. set to `-beta prerelease` for the prerelease branch"
-  default     = null
+  default     = "public"
 }
 
 # RUST_UPDATE_CHECKING
