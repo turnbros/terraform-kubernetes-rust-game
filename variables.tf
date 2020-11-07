@@ -45,7 +45,7 @@ variable "cpu_limit" {
 variable "memory_limit" {
   type        = string
   description = ""
-  default     = "1536Mi"
+  default     = "2048Mi"
 }
 
 variable "image_repository" {
