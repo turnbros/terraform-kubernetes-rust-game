@@ -91,7 +91,7 @@ variable "rust_server_name" {
 variable "rust_server_startup_arguments" {
   type        = string
   description = ""
-  default     = "-batchmode -load -nographics +server.secure 1"
+  default     = "-batchmode -load +server.level \"HapisIsland\" -nographics +server.secure 1"
 }
 
 # RUST_SERVER_IDENTITY
