@@ -208,7 +208,7 @@ variable "rust_update_branch" {
 variable "rust_start_mode" {
   type        = number
   description = "Determines if the server should update and then start (0), only update (1) or only start (2)"
-  default     = 0
+  default     = 2
 }
 
 # RUST_OXIDE_ENABLED
