@@ -73,15 +73,20 @@ variable "image_tag" {
 variable "image_pull_policy" {
   type        = string
   description = ""
-  default     = "IfNotPresent"
+  default     = "Always"
 }
 variable "image_pull_secret" {
   type = string
 }
+
 variable "name" {
   type        = string
   description = ""
   default     = "rust"
+}
+variable "domain_name" {
+  type = string
+  description = ""
 }
 
 # RUST_SERVER_NAME
@@ -116,7 +121,7 @@ variable "rust_server_port" {
 variable "rust_server_seed" {
   type        = number
   description = "The server map seed, must be an integer"
-  default     = 12345
+  default     = null
 }
 
 # RUST_SERVER_WORLDSIZE

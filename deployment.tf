@@ -66,7 +66,7 @@ resource kubernetes_deployment "rust_deployment" {
           }
           env {
             name  = "RUST_SERVER_SEED"
-            value = var.rust_server_seed
+            value = local.rust_server_seed
           }
           env {
             name  = "RUST_SERVER_WORLDSIZE"
