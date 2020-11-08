@@ -33,14 +33,14 @@ resource "kubernetes_service" "rust_server" {
       protocol    = "TCP"
       port        = var.rust_rcon_port
       target_port = var.rust_rcon_port
-      node_port   = var.rust_server_port
+      node_port   = var.rust_rcon_port
     }
     port {
       name        = "app"
       protocol    = "TCP"
       port        = var.rust_app_port
       target_port = var.rust_app_port
-      node_port   = var.rust_server_port
+      node_port   = var.rust_app_port
     }
   }
 }
