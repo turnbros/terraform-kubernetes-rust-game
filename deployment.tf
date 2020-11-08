@@ -48,7 +48,10 @@ resource kubernetes_deployment "rust_deployment" {
             name = "BUCKET_NAME"
             value = var.bucket_name
           }
-
+          env {
+            name = "BUCKET_SERVER_DATA_PREFIX"
+            value = var.bucket_server_data_prefix
+          }
           env {
             name  = "RUST_SERVER_STARTUP_ARGUMENTS"
             value = var.rust_server_startup_arguments

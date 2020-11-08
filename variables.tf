@@ -26,6 +26,10 @@ variable "bucket_host" {
 variable "bucket_name" {
   type = string
 }
+variable "bucket_server_data_prefix" {
+  type = string
+  default = "rust-game-data"
+}
 
 variable "cpu_request" {
   type        = string
@@ -57,7 +61,7 @@ variable "image_repository" {
 variable "image_name" {
   type        = string
   description = ""
-  default     = "turnbros/patina/patina" #"didstopia/rust-server"
+  default     = "turnbros/patina/patina"
 }
 
 variable "image_tag" {
