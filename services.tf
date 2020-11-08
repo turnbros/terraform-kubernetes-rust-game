@@ -35,6 +35,7 @@ resource "kubernetes_service" "rust_server" {
       target_port = var.rust_rcon_port
       node_port   = var.rust_rcon_port
     }
+    # TODO: This should be a TLS terminated ingress route
     port {
       name        = "rcon_app"
       protocol    = "TCP"
