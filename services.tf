@@ -6,7 +6,7 @@ resource "kubernetes_service" "rust_server" {
       "app.kubernetes.io/name" : var.name
     }, local.labels)
     annotations = {
-      external-dns.alpha.kubernetes.io/hostname: "${var.name}.${var.domain_name}"
+      "external-dns.alpha.kubernetes.io/hostname" : "${var.name}.${var.domain_name}"
     }
   }
   spec {
@@ -19,28 +19,28 @@ resource "kubernetes_service" "rust_server" {
       protocol    = "TCP"
       port        = var.rust_server_port
       target_port = var.rust_server_port
-      node_port = var.rust_server_port
+      node_port   = var.rust_server_port
     }
     port {
       name        = "server-udp"
       protocol    = "UDP"
       port        = var.rust_server_port
       target_port = var.rust_server_port
-      node_port = var.rust_server_port
+      node_port   = var.rust_server_port
     }
     port {
       name        = "rcon"
       protocol    = "TCP"
       port        = var.rust_rcon_port
       target_port = var.rust_rcon_port
-      node_port = var.rust_server_port
+      node_port   = var.rust_server_port
     }
     port {
       name        = "app"
       protocol    = "TCP"
       port        = var.rust_app_port
       target_port = var.rust_app_port
-      node_port = var.rust_server_port
+      node_port   = var.rust_server_port
     }
   }
 }

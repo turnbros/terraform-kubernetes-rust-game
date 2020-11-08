@@ -27,7 +27,7 @@ variable "bucket_name" {
   type = string
 }
 variable "bucket_server_data_prefix" {
-  type = string
+  type    = string
   default = "rust-game-data"
 }
 
@@ -85,7 +85,7 @@ variable "name" {
   default     = "rust"
 }
 variable "domain_name" {
-  type = string
+  type        = string
   description = ""
 }
 

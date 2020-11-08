@@ -29,27 +29,27 @@ resource kubernetes_deployment "rust_deployment" {
           image_pull_policy = var.image_pull_policy
 
           env {
-            name = "DEPLOYMENT_ID"
+            name  = "DEPLOYMENT_ID"
             value = "${var.name}-${local.instance_id}"
           }
           env {
-            name = "BUCKET_ACCESS_KEY"
+            name  = "BUCKET_ACCESS_KEY"
             value = var.bucket_access_key
           }
           env {
-            name = "BUCKET_SECRET_KEY"
+            name  = "BUCKET_SECRET_KEY"
             value = var.bucket_secret_key
           }
           env {
-            name = "BUCKET_HOST"
+            name  = "BUCKET_HOST"
             value = var.bucket_host
           }
           env {
-            name = "BUCKET_NAME"
+            name  = "BUCKET_NAME"
             value = var.bucket_name
           }
           env {
-            name = "BUCKET_SERVER_DATA_PREFIX"
+            name  = "BUCKET_SERVER_DATA_PREFIX"
             value = var.bucket_server_data_prefix
           }
           env {
