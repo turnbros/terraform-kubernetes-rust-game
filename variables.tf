@@ -110,13 +110,6 @@ variable "rust_server_identity" {
   default     = "docker"
 }
 
-# RUST_SERVER_PORT
-variable "rust_server_port" {
-  type        = number
-  description = "Rust server port 28015 if left blank or numeric value"
-  default     = 28015
-}
-
 # RUST_SERVER_SEED
 variable "rust_server_seed" {
   type        = number
@@ -173,17 +166,24 @@ variable "rust_rcon_web" {
   default     = 1
 }
 
+# RUST_RCON_PASSWORD
+variable "rust_rcon_password" {
+  type        = string
+  description = "RCON server password"
+}
+
+# RUST_SERVER_PORT
+variable "rust_server_port" {
+  type        = number
+  description = "Rust server port 28015 if left blank or numeric value"
+  default     = 28015
+}
+
 # RUST_RCON_PORT
 variable "rust_rcon_port" {
   type        = number
   description = "RCON server port"
   default     = 28016
-}
-
-# RUST_RCON_PASSWORD
-variable "rust_rcon_password" {
-  type        = string
-  description = "RCON server password"
 }
 
 # RUST_APP_PORT
