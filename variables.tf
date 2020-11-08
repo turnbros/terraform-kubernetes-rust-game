@@ -91,7 +91,7 @@ variable "rust_server_name" {
 variable "rust_server_startup_arguments" {
   type        = string
   description = ""
-  default     = "-batchmode -load +server.level \"HapisIsland\" -nographics +server.secure 1"
+  default     = "-batchmode -load -nographics +server.secure 1"
 }
 
 # RUST_SERVER_IDENTITY
@@ -119,7 +119,7 @@ variable "rust_server_seed" {
 variable "rust_server_worldsize" {
   type        = number
   description = "The map size, must be an integer"
-  default     = 3000
+  default     = 2500
 }
 
 # RUST_SERVER_MAXPLAYERS
