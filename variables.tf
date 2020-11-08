@@ -186,6 +186,13 @@ variable "rust_rcon_port" {
   default     = 28016
 }
 
+# RUST_RCON_APP_PORT
+variable "rust_rcon_app_port" {
+  type        = number
+  description = "RCON App server port"
+  default     = 28017
+}
+
 # RUST_APP_PORT
 variable "rust_app_port" {
   type        = number

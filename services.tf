@@ -36,6 +36,13 @@ resource "kubernetes_service" "rust_server" {
       node_port   = var.rust_rcon_port
     }
     port {
+      name        = "rcon_app"
+      protocol    = "TCP"
+      port        = 8080
+      target_port = 8080
+      node_port   = var.rust_rcon_app_port
+    }
+    port {
       name        = "app"
       protocol    = "TCP"
       port        = var.rust_app_port
