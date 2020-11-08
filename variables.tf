@@ -30,22 +30,22 @@ variable "bucket_name" {
 variable "cpu_request" {
   type        = string
   description = ""
-  default     = "1000m"
+  default     = "2000m"
 }
 variable "memory_request" {
   type        = string
   description = ""
-  default     = "2048Mi"
+  default     = "4096Mi"
 }
 variable "cpu_limit" {
   type        = string
   description = ""
-  default     = "1000m"
+  default     = "2000m"
 }
 variable "memory_limit" {
   type        = string
   description = ""
-  default     = "3072Mi"
+  default     = "6144Mi"
 }
 
 variable "image_repository" {
@@ -119,7 +119,7 @@ variable "rust_server_seed" {
 variable "rust_server_worldsize" {
   type        = number
   description = "The map size, must be an integer"
-  default     = 2500
+  default     = 4500
 }
 
 # RUST_SERVER_MAXPLAYERS
