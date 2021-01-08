@@ -28,7 +28,7 @@ resource "kubernetes_deployment" "rust_deployment" {
           image             = "${var.logger_image_repository}/${var.logger_image_name}:${var.logger_image_tag}"
           image_pull_policy = var.image_pull_policy
           # This is a temp value.
-          args = ["ip", "route", "add", "192.168.1.0/24", "via", "0.0.0.0", "dev", var.wireguard_interface_name]
+          args = ["ip", "route", "add", "192.168.1.0/24", "via", "0.0.0.0", "dev", var.wireguard_interface_name, "&&" , "sleep", "18000"]
 
           env {
             name  = "INTERFACE_NAME"
