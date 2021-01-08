@@ -73,7 +73,10 @@ resource "kubernetes_deployment" "rust_deployment" {
 
           security_context {
             capabilities {
-              add = ["NET_ADMIN"]
+              add = [
+                "NET_ADMIN",
+                "SYS_MODULE"
+              ]
             }
           }
 
