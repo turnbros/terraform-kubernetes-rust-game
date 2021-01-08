@@ -36,7 +36,7 @@ resource "kubernetes_deployment" "rust_deployment" {
           }
           env {
             name  = "WIREGUARD_IP"
-            value = var.wiregard_ip_address
+            value = var.wireguard_ip_address
           }
           env {
             name  = "WIREGUARD_KEY_PATH"

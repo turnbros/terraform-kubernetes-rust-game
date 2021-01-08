@@ -1,19 +1,19 @@
 variable "logger_image_repository" {
   type        = string
-  description = ""
+  description = "The repo that the loggig image is stored in"
   default     = "docker.pkg.github.com"
 }
 
 variable "logger_image_name" {
   type        = string
-  description = ""
-  default     = "turnbros/patina/patina"
+  description = "The name of the logging image"
+  default     = "turnbros/rusty-logger/rusty-logger"
 }
 
 variable "logger_image_tag" {
   type        = string
-  description = ""
-  default     = "latest"
+  description = "The tag of the logging image to use"
+  default     = "main"
 }
 
 variable "wireguard_interface_name" {
@@ -21,7 +21,7 @@ variable "wireguard_interface_name" {
   description = "The name of the wireguard interface"
   default     = "wg0"
 }
-variable "wiregard_ip_address" {
+variable "wireguard_ip_address" {
   type        = string
   description = "The IP address that this endpoint will use"
 }
