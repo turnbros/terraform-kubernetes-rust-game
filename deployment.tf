@@ -1,4 +1,4 @@
-resource kubernetes_deployment "rust_deployment" {
+resource "kubernetes_deployment" "rust_deployment" {
   metadata {
     name      = var.name
     namespace = kubernetes_namespace.rust_namespace.metadata.0.name
@@ -9,13 +9,13 @@ resource kubernetes_deployment "rust_deployment" {
   spec {
     selector {
       match_labels = {
-        "app.kubernetes.io/name" = var.name
+        "app.kubernetes.io/name" = local.logger_name
       }
     }
     template {
       metadata {
         labels = merge({
-          "app.kubernetes.io/name" : var.name
+          "app.kubernetes.io/name" : local.logger_name
         }, local.labels)
       }
       spec {
@@ -23,6 +23,70 @@ resource kubernetes_deployment "rust_deployment" {
           name = kubernetes_secret.secret.metadata.0.name
         }
         automount_service_account_token = false
+        container {
+          name              = local.logger_name
+          image             = "${var.logger_image_repository}/${var.logger_image_name}:${var.logger_image_tag}"
+          image_pull_policy = var.image_pull_policy
+          # This is a temp value.
+          command = ["ip route add 192.168.1.0/24 via 0.0.0.0 dev wg0"]
+
+          env {
+            name  = "INTERFACE_NAME"
+            value = var.wireguard_interface_name
+          }
+          env {
+            name  = "WIREGUARD_IP"
+            value = var.wiregard_ip_address
+          }
+          env {
+            name  = "WIREGUARD_KEY_PATH"
+            value = "/opt/wireguard-key/private.key"
+          }
+          env {
+            name  = "WIREGUARD_CONFIG_PATH"
+            value = "/opt/wireguard-config/wireguard.conf"
+          }
+
+          volume_mount {
+            name       = "wireguard-key"
+            mount_path = "/opt/wireguard-key"
+            read_only  = true
+          }
+          volume_mount {
+            name       = "wireguard-config"
+            mount_path = "/opt/wireguard-config"
+            read_only  = true
+          }
+          volume_mount {
+            name       = "filebeat-config"
+            mount_path = "/opt/filebeat"
+            read_only  = true
+          }
+          volume_mount {
+            mount_path = local.log_path
+            name       = "log-data"
+            read_only  = true
+          }
+
+          security_context {
+            capabilities {
+              add = ["NET_ADMIN"]
+            }
+          }
+
+          # TODO: Enable resource limits (Once we understand what the requirements are)
+          #resources {
+          #  requests {
+          #    cpu    = var.cpu_request
+          #    memory = var.memory_request
+          #  }
+          #  limits {
+          #    cpu    = var.cpu_limit
+          #    memory = var.memory_limit
+          #  }
+          #}
+
+        }
         container {
           name              = var.name
           image             = "${var.image_repository}/${var.image_name}:${var.image_tag}"
@@ -54,7 +118,7 @@ resource kubernetes_deployment "rust_deployment" {
           }
           env {
             name  = "RUST_SERVER_STARTUP_ARGUMENTS"
-            value = var.rust_server_startup_arguments
+            value = "${var.rust_server_startup_arguments} -logfile ${local.log_path}/${var.name}.log"
           }
           env {
             name  = "RUST_SERVER_IDENTITY"
@@ -175,6 +239,34 @@ resource kubernetes_deployment "rust_deployment" {
           #    port = var.rust_rcon_port
           #  }
           #}
+
+          volume_mount {
+            mount_path = local.log_path
+            name       = "log-data"
+            read_only  = true
+          }
+        }
+        volume {
+          name = "wireguard-key"
+          secret {
+            secret_name = kubernetes_secret.wireguard_private_key.metadata.0.name
+          }
+        }
+        volume {
+          name = "wireguard-config"
+          config_map {
+            name = kubernetes_config_map.wireguard_config.metadata.0.name
+          }
+        }
+        volume {
+          name = "filebeat-config"
+          config_map {
+            name = kubernetes_config_map.filebeat_config.metadata.0.name
+          }
+        }
+        volume {
+          name = "log-data"
+          empty_dir {}
         }
       }
     }
