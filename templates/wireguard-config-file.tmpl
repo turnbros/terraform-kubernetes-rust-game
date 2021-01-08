@@ -1,8 +1,8 @@
 [Interface]
-ListenPort = {{wireguard_listen_port}}
-PrivateKey = {{wireguard_private_key}}
+ListenPort = ${wireguard_listen_port}
+PrivateKey = ${wireguard_private_key}
 
 [Peer]
-PublicKey = {{wireguard_remote_peer_public_key}}
-AllowedIPs = {{wireguard_allowed_ip_cidrs}}
-Endpoint = {{wireguard_remote_endpoint_ip}}:{{wireguard_remote_endpoint_port}}
+PublicKey = ${wireguard_remote_peer_public_key}
+AllowedIPs = ${wireguard_allowed_ip_cidrs}
+Endpoint = ${wireguard_remote_endpoint_ip}:${wireguard_remote_endpoint_port}
