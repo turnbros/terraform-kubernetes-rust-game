@@ -11,7 +11,7 @@ resource "kubernetes_config_map" "wireguard_config" {
       wireguard_listen_port            = var.wireguard_listen_port
       wireguard_private_key            = var.wireguard_private_key
       wireguard_remote_peer_public_key = var.wireguard_remote_peer_public_key
-      wireguard_allowed_ip_cidrs       = jsonencode(var.wireguard_allowed_ip_cidrs)
+      wireguard_allowed_ip_cidrs       = join(", ", var.wireguard_allowed_ip_cidrs)
       wireguard_remote_endpoint_ip     = var.wireguard_remote_endpoint_ip
       wireguard_remote_endpoint_port   = var.wireguard_remote_endpoint_port
     })
