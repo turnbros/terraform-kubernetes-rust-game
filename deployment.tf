@@ -243,7 +243,6 @@ resource "kubernetes_deployment" "rust_deployment" {
           volume_mount {
             mount_path = local.log_path
             name       = "log-data"
-            read_only  = true
           }
         }
         volume {
