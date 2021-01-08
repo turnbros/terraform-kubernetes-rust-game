@@ -13,7 +13,7 @@ variable "logger_image_name" {
 variable "logger_image_tag" {
   type        = string
   description = "The tag of the logging image to use"
-  default     = "main"
+  default     = "0.1.0"
 }
 
 variable "wireguard_interface_name" {
