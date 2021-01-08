@@ -41,6 +41,7 @@ resource "kubernetes_config_map" "filebeat_config" {
         ]
         username = var.elasticsearch_endpoint_username
         password = var.elasticsearch_endpoint_password
+        "ssl.verification_mode" = "none"
       }
     })
   }
