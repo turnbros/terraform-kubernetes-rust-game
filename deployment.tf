@@ -74,6 +74,11 @@ resource "kubernetes_deployment" "rust_deployment" {
             mount_path = "/opt/filebeat/data"
             name       = "filebeat-data"
           }
+          volume_mount {
+            mount_path = "/opt/filebeat/logs"
+            name       = "filebeat-logs"
+          }
+
 
           security_context {
             capabilities {
@@ -279,6 +284,10 @@ resource "kubernetes_deployment" "rust_deployment" {
         }
         volume {
           name = "filebeat-data"
+          empty_dir {}
+        }
+        volume {
+          name = "filebeat-logs"
           empty_dir {}
         }
       }
