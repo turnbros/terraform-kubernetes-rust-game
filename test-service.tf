@@ -1,4 +1,4 @@
-resource "kubernetes_service" "rust_server" {
+resource "kubernetes_service" "rust_server_test" {
   metadata {
     name      = "${var.name}-test"
     namespace = kubernetes_namespace.rust_namespace.metadata.0.name
