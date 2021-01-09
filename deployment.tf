@@ -9,13 +9,13 @@ resource "kubernetes_deployment" "rust_deployment" {
   spec {
     selector {
       match_labels = {
-        "app.kubernetes.io/name" = local.logger_name
+        "app.kubernetes.io/name" = var.name
       }
     }
     template {
       metadata {
         labels = merge({
-          "app.kubernetes.io/name" : local.logger_name
+          "app.kubernetes.io/name" : var.name
         }, local.labels)
       }
       spec {
