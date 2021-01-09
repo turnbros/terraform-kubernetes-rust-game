@@ -27,6 +27,7 @@ resource "kubernetes_config_map" "filebeat_config" {
     }, local.labels)
   }
   data = {
+    "setup.ilm.enabled": false
     "filebeat.yml" = yamlencode({
       "filebeat.inputs" = [{
         type    = "log"
