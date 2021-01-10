@@ -200,6 +200,13 @@ variable "rust_app_port" {
   default     = 28082
 }
 
+# Not tied to an env var. Just a port required by steam. Link: https://support.steampowered.com/kb_article.php?ref=8571-GLVN-8711
+variable "steam_srcds_port" {
+  type        = number
+  description = "Steam SRCDS RCON and gameplay port"
+  default     = 27015
+}
+
 # RUST_BRANCH
 variable "rust_branch" {
   type        = string

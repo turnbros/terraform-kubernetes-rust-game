@@ -50,5 +50,21 @@ resource "kubernetes_service" "rust_server" {
       target_port = var.rust_app_port
       node_port   = var.rust_app_port
     }
+
+    # Steam requires port 27015 be used. Link: https://support.steampowered.com/kb_article.php?ref=8571-GLVN-8711
+    port {
+      name        = "steam-srcds-rcon"
+      protocol    = "TCP"
+      port        = 27015
+      target_port = 27015
+      node_port   = var.steam_srcds_port
+    }
+    port {
+      name        = "steam-srcds-gameplay"
+      protocol    = "UDP"
+      port        = 27015
+      target_port = 27015
+      node_port   = var.steam_srcds_port
+    }
   }
 }
