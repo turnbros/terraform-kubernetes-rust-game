@@ -28,7 +28,7 @@ resource "kubernetes_config_map" "filebeat_config" {
   }
   data = {
     "filebeat.yml" = yamlencode({
-      "setup.ilm.enabled": false
+      "setup.ilm.enabled" = false
       "filebeat.inputs" = [{
         type    = "log"
         enabled = true
@@ -40,8 +40,8 @@ resource "kubernetes_config_map" "filebeat_config" {
         hosts = [
           "${var.elasticsearch_endpoint_hostname}:${var.elasticsearch_endpoint_port}"
         ]
-        username = var.elasticsearch_endpoint_username
-        password = var.elasticsearch_endpoint_password
+        username                = var.elasticsearch_endpoint_username
+        password                = var.elasticsearch_endpoint_password
         "ssl.verification_mode" = "none"
       }
     })
