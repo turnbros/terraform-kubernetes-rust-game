@@ -107,6 +107,15 @@ resource "kubernetes_deployment" "rust_deployment" {
           image             = "${var.image_repository}/${var.image_name}:${var.image_tag}"
           image_pull_policy = var.image_pull_policy
 
+          security_context {
+            capabilities {
+              add = [
+                "NET_ADMIN",
+                "SYS_MODULE"
+              ]
+            }
+          }
+
           env {
             name  = "DEPLOYMENT_ID"
             value = "${var.name}-${local.instance_id}"
